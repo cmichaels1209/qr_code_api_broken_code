@@ -36,7 +36,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run tests with Pytest
-        run: pytest
+        run: PYTHONPATH=./ pytest
 
   build-and-push-docker:
     needs: test
@@ -60,7 +60,7 @@ jobs:
           push: true
           tags: cmichaels1209/fastapi_qrcode:${{ github.sha }} # Uses the Git SHA for tagging
           platforms: linux/amd64,linux/arm64 # Multi-platform support
-          cache-from: type=registry, cmichaels1209/fastapi_qrcode:cache
+          cache-from: type=registry,ref=cmichaels1209/fastapi_qrcode:cache
           cache-to: type=inline,mode=max
 
       - name: Scan the Docker image
