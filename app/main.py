@@ -35,3 +35,4 @@ app = FastAPI(
 # We have two routers in this case: one for managing QR codes and another for handling OAuth authentication.
 app.include_router(qr_code.router)  # QR code management routes
 app.include_router(oauth.router)  # OAuth authentication routes
+
